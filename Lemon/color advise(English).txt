@@ -1,0 +1,64 @@
+Primary Colors (60%):
+
+Sunny Lemon Yellow: #FFE45C (A warm yellow similar to fresh lemons)
+
+Soft Light Beige: #FFF9E6 (Used as a background transition color to reduce visual fatigue)
+
+Secondary Colors (30%):
+
+Lime Leaf Green: #8BC34A (Evokes the fresh, natural feel of lemon leaves)
+
+Citrus Orange: #FFA726 (Used for emphasis on action buttons and icons)
+
+Wood Brown: #BCAAA4 (Used to accent wooden elements)
+
+Accent Colors (10%):
+
+Vibrant Coral Red: #FF7043 (Used for important notifications and call-to-action buttons)
+
+Neutral Colors:
+
+Light Gray: #F5F5F5 (Background support color)
+
+Medium Gray: #757575 (Secondary text)
+
+Dark Gray: #424242 (Primary text)
+
+Application Recommendations:
+
+Layering Design:
+
+Use #FFF9E6 as the main background
+
+Titles with a gradient of #FFE45C (recommended gradient direction: left to right, 80% → 100% transparency)
+
+Buttons with a subtle gradient from #FFA726 to #FF7043
+
+Contrast Control:
+
+Maintain a 7:1 contrast ratio between text and background
+
+Important information should use #FF7043 with white text
+
+Action buttons should have a 1px border in #BCAAA4 for better recognition
+
+Visual Flow:
+
+Use light shadows in focal areas (recommended: rgba(255,228,92,0.2))
+
+Dividers should be thin lines with 30% transparency of #8BC34A
+
+Adaptation Plan:
+
+For dark mode, adjust the primary color to #F9D71C (reduce brightness)
+
+Adjust secondary colors to #689F38 and #E65100 accordingly
+
+Design Considerations:
+
+Avoid using pure white backgrounds extensively; use #FFFDF5 as the base background color
+
+When overlaying images, use a linear gradient (90deg, #FFE45C20, #8BC34A10)
+
+For charts, apply primary colors with different brightness levels within the same color scheme
+

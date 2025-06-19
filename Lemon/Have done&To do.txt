@@ -1,0 +1,11 @@
+Have Done:
+Basic webpage layout, 
+Dedicated pages for several sections, 
+Buttons for linking pages, 
+images ready for use.
+
+To do:
+SQL for the website,
+.php file to enable the login function
+Login button
+Translation function
