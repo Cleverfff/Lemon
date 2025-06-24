@@ -7,10 +7,11 @@ body {
 }
 
 #header {
-  width:70%;
+  flex: 1;
+  /* width: 71.5%; */
   height: auto;
   text-align: center;
-  margin: auto;
+  margin: 0 15.5%;
   font-size: x-large;
   color: #FFE45C;
 }
@@ -36,9 +37,10 @@ body {
 }
 
 #container {
-  width: 70%;
+  flex: 1;
+  /* width: 72em; */
   height: 95vh;
-  margin: auto;
+  margin: 0 15.5%;
   background: #FFF9E6;
   padding: 20px;
   border-radius: 8px;
@@ -76,7 +78,7 @@ a:hover {
 }
 
 a {
-  color:#FFE45C
+  color: #FFE45C
 }
 
 
@@ -87,4 +89,3 @@ h2 {
 .title-text:hover {
   color: #FF7043;
 }
-
