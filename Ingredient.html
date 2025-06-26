@@ -1,32 +1,55 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LemonadeIngredients</title>
-  <link rel="stylesheet" type="text/css" href="ingredient.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HowToMakeLemonade</title>
+    <link rel="stylesheet" type="text/css" href="lemon.css">
 </head>
 
 <body>
-  <div id="container">
-    <h1>Ingredients you should buy</h1>
-    <div style="display:flex; flex-direction:row; justify-content:space-between">
-      <ul>
-        <li>Fresh lemons</li>
-        <li>Water</li>
-        <li>Sugar</li>
-        <li>Ice (optional)</li>
-      </ul>
-      <div>
-        <img src="lemonpics/lemon_1.png">
-      </div>
-    </div>
-    <a href="Lemon.html">
-      <h1 class="title-text">Go Back</h1>
-    </a>
-  </div>
+    <div>
+        <div id="nav" style="display:flex; flex-direction:column;">
+            <a href="Lemon.html" style="text-decoration:none; font-size:xx-large;">Home</a>
+            <a href="Ingredient.html" style="text-decoration:none;font-size:xx-large;">Ingredients</a>
+            <a href="Instructions.html" style="text-decoration:none;font-size:xx-large;">Instructions</a>
+            <a href="Tips.html" style="text-decoration:none;font-size:xx-large;">Tips</a>
+            <a href="Variations.html" style="text-decoration:none;font-size:xx-large;">Variations</a>
+            <img src="lemonpics/Lemonade-blog.jpg">Lemonade-blog.jpg
+        </div>
 
-  <style></style>
+        <div id="body" style="display:flex; flex-direction:column; justify-content:space-between; margin:auto">
+            <div id="header">
+                <h1 id="header-background">HTML----How To Make Lemonade</h1>
+            </div>
+
+            <!-- 页面主要内容区，供各页面自定义填充 -->
+            <div id="container">
+                <h1>Ingredients you should buy</h1>
+                    <div style="display:flex; flex-direction:row; justify-content:space-between">
+                    <ul>
+                        <li>Fresh lemons</li>
+                        <li>Water</li>
+                        <li>Sugar</li>
+                        <li>Ice (optional)</li>
+                    </ul>
+                    <div>
+                        <img src="lemonpics/lemon_1.png">
+                    </div>
+                    </div>
+                    <a href="Lemon.html">
+                        <h1 class="title-text">Go Back</h1>
+                    </a>
+            </div>
+        </div>
+
+        <div id="func" style="display:flex; flex-direction:column;"></div>
+
+        <div id="footer">
+            <p>How To Make Lemonade Author:Pan Zitao.<a href="Thanks.html" style="text-decoration:none;">Thanks to...</a></p>
+        </div>
+    </div>
 </body>
 
 </html>
