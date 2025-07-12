@@ -1,0 +1,126 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.main-wrapper {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+
+.nav, .func {
+    position: fixed;
+    top: 0;
+    width: 10vw;
+    min-width: 160px;
+    max-width: 220px;
+    height: 95vh;
+    background: #FFF9E6;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+}
+
+.nav {
+    left: 0;
+}
+
+.func {
+    right: 0;
+}
+
+.main-content {
+    flex: 1;
+    margin-left: 0;
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    justify-content: space-between;
+    width: 60vw;
+    max-width: 800px;
+    min-width: 350px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.header, .container, .footer {
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+}
+
+.header {
+    margin-top: 40px;
+}
+
+.header-title {
+    background: #FFF9E6;
+    padding: 20px;
+    border-radius: 8px;
+    color: #FFE45C;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.container {
+    background: #FFF9E6;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 700px;
+    margin: 40px 0;
+    text-align: center;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footer {
+    font-size: medium;
+    color: #000;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 1.5em;
+    color: #FFE45C;
+    margin-bottom: 10px;
+    transition: color 0.2s;
+}
+
+.nav-link:hover,
+.footer-link:hover {
+    color: #FF7043;
+    text-shadow: #BCAAA4 0px 0px 5px;
+}
+
+.nav-img {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: #FFE45C;
+}
+
+h2 {
+    color: #FFE45C;
+}

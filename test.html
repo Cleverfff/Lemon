@@ -4,37 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HowToMakeLemonade</title>
-    <link rel="stylesheet" type="text/css" href="Ingredient.css">
+    <title>How To Make Lemonade</title>
+    <!-- 建议CSS文件名与页面一致，便于管理 -->
+    <link rel="stylesheet" type="text/css" href="test.css">
 </head>
 
 <body>
-    <div>
-        <div id="nav" style="display:flex; flex-direction:column;">
-            <a href="Lemon.html" style="text-decoration:none; font-size:xx-large;">Home</a>
-            <a href="Ingredient.html" style="text-decoration:none;font-size:xx-large;">Ingredients</a>
-            <a href="Instructions.html" style="text-decoration:none;font-size:xx-large;">Instructions</a>
-            <a href="Tips.html" style="text-decoration:none;font-size:xx-large;">Tips</a>
-            <a href="Variations.html" style="text-decoration:none;font-size:xx-large;">Variations</a>
-            <img src="lemonpics/Lemonade-blog.jpg">Lemonade-blog.jpg
-        </div>
+    <div class="main-wrapper">
+        <nav class="nav">
+            <a href="Lemon.html" class="nav-link">Home</a>
+            <a href="Ingredient.html" class="nav-link">Ingredients</a>
+            <a href="Instructions.html" class="nav-link">Instructions</a>
+            <a href="Tips.html" class="nav-link">Tips</a>
+            <a href="Variations.html" class="nav-link">Variations</a>
+            <img src="lemonpics/Lemonade-blog.jpg" alt="Lemonade" class="nav-img">
+        </nav>
 
-        <div id="body" style="display:flex; flex-direction:column; justify-content:space-between; margin:auto">
-            <div id="header">
-                <h1 id="header-background">HTML----How To Make Lemonade</h1>
-            </div>
+        <main class="main-content">
+            <header class="header">
+                <h1 class="header-title">HTML——How To Make Lemonade</h1>
+            </header>
 
-            <!-- 页面主要内容区，供各页面自定义填充 -->
-            <div id="container">
-                
-            </div>
-        </div>
+            <!-- 页面主要内容区 -->
+            <section class="container">
+                <h2>Welcome!</h2>
+                <p>This page will show you how to make delicious lemonade. Use the navigation links to explore ingredients, instructions, tips, and variations!</p>
+            </section>
 
-        <div id="func" style="display:flex; flex-direction:column;"></div>
+            <footer class="footer">
+                <p>How To Make Lemonade Author: Pan Zitao. <a href="Thanks.html" class="footer-link">Thanks to...</a></p>
+            </footer>
+        </main>
 
-        <div id="footer">
-            <p>How To Make Lemonade Author:Pan Zitao.<a href="Thanks.html" style="text-decoration:none;">Thanks to...</a></p>
-        </div>
+        <aside class="func"></aside>
     </div>
 </body>
 
