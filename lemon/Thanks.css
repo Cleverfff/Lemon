@@ -1,0 +1,84 @@
+/*
+ * Styles for the simple Acknowledgements page (Thanks.html).
+*/
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFFDF5; /* Consistent background from index.css */
+    color: #424242;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.thanks-container {
+    background: #FFF9E6;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(255, 228, 92, 0.2);
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: #FFE45C;
+    font-size: 2.5em;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.thanks-section {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+h2 {
+    color: #FFA726;
+    border-bottom: 2px solid #BCAAA4;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+a {
+    color: #8BC34A;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #FF7043;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #FFA726;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.back-link:hover {
+    background-color: #FF7043;
+    color: white;
+    transform: scale(1.05);
+}

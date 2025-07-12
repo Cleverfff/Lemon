@@ -1,0 +1,43 @@
+/*
+ * Styles specific to the Tips page (Tips.html).
+*/
+
+.tips-grid {
+    display: grid;
+    /* Create a responsive grid that fits as many columns as possible */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+    padding: 0 20px;
+}
+
+.tip-card {
+    background-color: #FFFDF5; /* Use a slightly different background for contrast */
+    border: 2px dashed #8BC34A; /* Use the green accent color for a "tip" feel */
+    border-radius: 8px;
+    padding: 25px;
+    text-align: left;
+}
+
+.tip-card h3 {
+    color: #8BC34A; /* Match the border color */
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding-left: 35px; /* Space for the icon */
+    position: relative;
+}
+
+/* Add a lightbulb icon before each tip heading */
+.tip-card h3::before {
+    content: '💡'; /* Lightbulb emoji as a simple icon */
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.2em;
+}
+
+.tip-card p {
+    color: #757575;
+    margin: 0;
+    line-height: 1.6;
+}

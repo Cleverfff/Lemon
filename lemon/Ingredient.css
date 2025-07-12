@@ -1,0 +1,53 @@
+/*
+ * Styles specific to the Ingredients page (Ingredient.html).
+ * This file should be linked in Ingredient.html AFTER index.css to apply correctly.
+*/
+
+/* Styles for the ingredients list container */
+.ingredient-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px; /* Spacing between items */
+    margin-top: 40px;
+    padding: 0 20px; /* Add some horizontal padding */
+}
+
+/* Styles for each individual ingredient card */
+.ingredient-item {
+    background-color: #FFF9E6; /* Matches the panel background color from index.css */
+    border: 1px solid #BCAAA4; /* Matches the border color from index.css */
+    border-radius: 8px; /* Consistent border radius */
+    padding: 20px;
+    width: 220px; /* Fixed width for each card */
+    box-shadow: 0 4px 12px rgba(255, 228, 92, 0.2); /* Consistent shadow */
+    text-align: center;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.ingredient-item:hover {
+    transform: translateY(-5px); /* Add a subtle lift effect on hover */
+    box-shadow: 0 6px 16px rgba(255, 228, 92, 0.3);
+}
+
+/* Styles for the image within the card */
+.ingredient-item img {
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+/* Styles for the heading within the card */
+.ingredient-item h3 {
+    color: #FFA726; /* Using the accent orange color for emphasis */
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+/* Styles for the paragraph within the card */
+.ingredient-item p {
+    color: #757575; /* Using the secondary text color */
+    font-size: 0.9em;
+    line-height: 1.5;
+}

@@ -1,0 +1,50 @@
+/*
+ * Styles specific to the Variations page (Variations.html).
+*/
+
+.variations-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.variation-item {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background-color: #FFF9E6;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(255, 228, 92, 0.2);
+}
+
+/* Alternate the layout for every even-numbered item */
+.variation-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.variation-item img {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    border: 2px solid #BCAAA4;
+}
+
+.variation-description {
+    flex: 1;
+    text-align: left;
+}
+
+.variation-description h3 {
+    color: #FF7043; /* Use the strong accent color for variation titles */
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.variation-description p {
+    color: #757575;
+    margin: 0;
+    line-height: 1.6;
+}

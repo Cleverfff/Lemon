@@ -1,0 +1,106 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #FFFDF5; /* 优化：使用建议的柔和背景色 */
+    color: #424242; /* 优化：使用建议的主要文字颜色 */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.header {
+    background: #FFF9E6;
+    padding: 20px;
+    text-align: center;
+    color: #FFE45C;
+    box-shadow: 0 4px 12px rgba(255, 228, 92, 0.2); /* 优化：使用建议的焦点区域投影 */
+    flex-shrink: 0; /* Prevent header from shrinking */
+    border-bottom: 1px solid #BCAAA4; /* 优化：添加细节边框 */
+}
+
+.header-title {
+    margin: 0;
+    font-size: 2em;
+}
+
+/* Main Content Wrapper */
+.main-wrapper {
+    display: flex;
+    flex-grow: 1; /* Allow this section to grow and fill available space */
+    width: 100%;
+    align-items: flex-start; /* Crucial for sticky positioning to work correctly */
+}
+
+/* Navigation and Function Sidebars */
+.nav, .func {
+    width: 12%; /* Set width for sidebars */
+    background: #FFF9E6;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(255, 228, 92, 0.2); /* 优化：使用建议的焦点区域投影 */
+    
+    /* --- FIX FOR STICKY SCROLLING --- */
+    position: sticky;
+    top: 0;
+    height: 100vh; /* Make sidebars full viewport height */
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 1.5em;
+    color: #8BC34A; /* 优化：使用青柠叶绿作为导航链接颜色 */
+    margin-bottom: 15px;
+    transition: color 0.2s;
+}
+
+.nav-img {
+    width: 100%;
+    max-width: 150px;
+    margin-top: auto; /* Pushes image to the bottom of the nav */
+    padding-top: 20px;
+    border-radius: 8px;
+}
+
+/* Main Container (Center Content) */
+.container {
+    flex-grow: 1; /* Allow container to take up remaining space */
+    padding: 40px;
+    background-color: #FFFFFF; /* 优化：恢复为浅色背景，与主背景形成对比 */
+    color: #424242; /* 优化：确保文字在浅色背景上可读 */
+    text-align: center;
+    overflow-y: auto; /* Add scroll for content if it overflows */
+    border-left: 1px solid #BCAAA4; /* 优化：添加边框以区分层次 */
+    border-right: 1px solid #BCAAA4;
+}
+
+.container h2 {
+    color: #FFE45C;
+    font-size: 2.5em;
+}
+
+/* Footer */
+.footer {
+    background: #FFF9E6;
+    padding: 20px;
+    text-align: center;
+    color: #757575; /* 优化：使用建议的次级文字颜色 */
+    flex-shrink: 0; /* Prevent footer from shrinking */
+    box-shadow: 0 -4px 12px rgba(255, 228, 92, 0.2); /* 优化：使用建议的焦点区域投影 */
+    border-top: 1px solid #BCAAA4; /* 优化：添加细节边框 */
+}
+
+.footer-link {
+    text-decoration: none;
+    color: #FF7043;
+}
+
+/* Hover effects */
+.nav-link:hover,
+.footer-link:hover {
+    color: #FF7043;
+    text-shadow: #BCAAA4 0px 0px 5px;
+}

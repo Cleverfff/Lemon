@@ -1,0 +1,83 @@
+/*
+ * Styles for the Login page.
+*/
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFFDF5; /* Consistent background */
+    color: #424242;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background: #FFF9E6;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(255, 228, 92, 0.2);
+    width: 350px;
+    box-sizing: border-box;
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 30px;
+    color: #FFA726;
+    font-size: 2em;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1em;
+    color: #757575;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #BCAAA4;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #FFA726;
+    box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.2);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: #FFA726;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.login-btn:hover {
+    background: #FF7043;
+    transform: translateY(-2px);
+}
+
+.error-message {
+    color: #FF7043;
+    text-align: center;
+    margin-top: 15px;
+    height: 1em;
+}
