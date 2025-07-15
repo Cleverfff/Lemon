@@ -16,10 +16,13 @@ body {
 
 /* Header */
 .header {
-  min-height: 5%;
-  background: #FFF9E6;
-  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 10%;
+  height: 10%;
   text-align: center;
+  background: #FFF9E6;
   color: #FFE45C;
   box-shadow: 0 4px 12px rgba(255, 228, 92, 0.2);
   /* 优化：使用建议的焦点区域投影 */
@@ -29,9 +32,18 @@ body {
   /* 优化：添加细节边框 */
 }
 
+.header>header {
+  flex: 0.5;
+  justify-content: center;
+  text-align: center;
+}
+
 .header-title {
   margin: 0;
-  font-size: 2em;
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 18px;
+  height: 14px;
 }
 
 /* Main Content Wrapper */
@@ -86,20 +98,16 @@ body {
 /* Main Container (Center Content) */
 .container {
   flex: 1;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* Allow container to take up remaining space */
   padding: 40px;
   background-color: #FFFFFF;
-  /* 优化：恢复为浅色背景，与主背景形成对比 */
   color: #424242;
-  /* 优化：确保文字在浅色背景上可读 */
   text-align: center;
   overflow-y: auto;
-  /* Add scroll for content if it overflows */
   border-left: 1px solid #BCAAA4;
-  /* 优化：添加边框以区分层次 */
   border-right: 1px solid #BCAAA4;
 }
 
