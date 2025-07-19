@@ -1,0 +1,166 @@
+您的网站由页眉、中间部分和页脚组成。 
+页眉和页脚占据场地的整个宽度，中间部分在两侧有两个区域，宽度为 10% 至 20% 以及 中心部分60% 到 80% 分别。 
+
+导航和功能元素的设置方式使其在滚动时保持可见。如果它们移动了一点，你在评分时就会松动一点。最好的是，它们真的是紧紧固定的。 
+左侧用于导航， 
+右侧用于功能元素， 
+中间部分用于您网站的内容。 
+
+标题 给出了标题和简要介绍。个人信息将转到 页脚。 
+
+我希望内容主要是图片和附带的文字。 
+该数量必须足以容纳至少 2 个屏幕页面，以便可以正确滚动。 
+
+文本应通过按下按钮来更改语言。在最简单的情况下，只有英文和中文。任何其他组合都是 wellcome。附加语言导致评分增加。内容的正确性不是主要关注点。不允许使用Blind text（降级）。 
+
+该站点无法直接访问。您必须通过一个要求提供登录 ID 和密码的登录页面。 
+在登录页面上输入这些数据的表单也是水平居中和垂直居中。 
+用户输入的数据在发送到服务器之前将被加密。服务器必须通过数据库检查正确性。
+对于最终版本，站点将从服务器（本地服务器，但无论如何都是服务器）交付。
+
+在最小情况下，加密必须是 cesar 加密。
+更好的算法是受欢迎的 （Viegenére eg）.
+你必须能够解释算法。
+在没有自己理解的情况下仅仅复制粘贴复杂的加密是不可接受的。
+这适用于您可能使用的任何外部代码。
+
+所有外来材料都必须标明，并且必须附有对来源的正确引用。 
+未能满足此要求是完全不及格课程的安全方法。剽窃是不可接受的。 
+
+如果不确定外国材料的法律状态，请与我联系，以检查我们是否可以将其视为“合理使用”
+
+Your site is composed from a Header, a middle part and a Footer.
+Header and Footer take the complete width of the site, the middle part has two zones at the sides with a width of apr. 10% to 20% and a center part of apr. 60% to 80% respective.
+
+Navigational and functional elements are set up in a way that they stay visible at scrolling. If they move a little bit you loose a little bit at grading. Best they are really tightly fixed.
+The left hand side is to be used for Navigation,
+the right hand side serves for functional elements,
+the middle part takes the content of your site.
+
+The Header gives the title and a brief introduction what this is about. Personal information go to the Footer.
+
+I expect the content to be mainly pictures with accompaining text.
+The amount has to be enough for at least 2 screen pages so proper scrolling is possible.
+
+The Text shall change the language by press of a button. In the simplest case just English and Chinese. Any other combination is wellcome. Additinal language give a rise in grading. Correctness of the content is not the main concern. Blind text is not allowed (downgrading).
+
+The site is not directly reachable. You have to go through a login page that asks for login-ID and password.
+The form for entering these data on the login-page is as well horizontal as vertical centered.
+The data entered by the user are to be ecrypted before sent to the server. The server has to check the correctness by means of a database. For the final version the site is to be delivered from a server (a local server but a server anyway).
+
+The encryption has to be in the minimal case a cesar encryption.
+Better algorithms are welcome (Viegenére eg).
+You have to be able to explain the algorithm.
+Just copy-paste a complicated encryption without own understanding is not acceptable.
+This goes for ANY foreign code that you may use.
+
+ALL foreign material has to be marked as such and has to be accompanied by a correct reference to the source.
+Failing this demand is a safe way to fail the course completely. Plagiarism is not acceptable.
+
+If the legal state of foreign material is unsure, please contact me to check whether we can consider it as "fair use".
+
+起点： 满足所有强制性要求： 100 P
+这是通过升级获得额外积分的前提条件。
+未完全满足基本配置：无升级
+
+升级附加服务：
+前提条件：满足所有强制性规范
+
+所有需要翻译的内容都来自一个数据库：15P
+要翻译的内容来自 JSON 文件：10P
+会话管理 10P
+加密优于 Cesar （eg Vigenére）：10P
+翻译 2 种以上语言：10P
+使用 AJAX 10P
+动态访问 DOM 树（添加或删除元素） 15P
+用于传输到服务器的 Base64 翻译（仅在过程可以口头解释时有效） 5 便士
+字体大小可缩放 5P
+自适应设计 15P
+幻灯片放映（作为额外内容，而不是滚动）10P
+文档 10P
+缺少强制性规格的重大降级：
+
+未保留布局要求（见下文）
+缺少翻译（最少 2 种语言）（-20P）
+服务器端检查无登录功能 （-20P）
+登录表单未居中（水平和垂直）（-10P）
+从客户端到服务器的登录数据未加密 （-20P）
+未显示加密文本 （-10P）
+页面不够长，无法滚动（最少 2 个屏幕页面）（-10P）
+内容缺失 （-40）
+进一步降级：
+-15 文件或文件夹名称中不可打印的字符或特殊字符
+-文件或文件夹名称中除罗马字以外的 10 个其他字符
+-15 断开的链接（也未显示代码）
+-15 功能未启动
+-5 登录存在但有问题（取决于代码质量）
+-5 评论不是英文的
+布局失败：
+-5 未保留规范（对于每个失败的规范）
+-5 扭曲的图片
+-5 内容和视口
+之间的比例不合适-5 图片不适应显示大小（除非你能给出充分的理由）
+-10 冗余代码
+-10 没有充分理由
+就过度载入复杂性-10 使用已弃用的标签/属性
+-10 滥用标签（通常是用于布局的表格）
+-10 不理解外文代码，无法解释
+-5 文件顶部未提及作者（每个文件计分）
+完全失败的单一原因：
+未标记外来材料
+未引用源
+的外来材料 不理解锚标签
+检视你刚才创造的这些文件，根据这些要求进行修改（有些要求不能同时做到，给出解释并选择一项进行修改）
+
+Starting point: all obligatory specifications met: 100 P
+This is a precondition for gaining additional point by upgrading.
+Basic specifications not completly met: NO UPGRADING
+
+Upgrading for extras:
+Precondition: all obligatory specifications are met
+
+    All content for translation comes from a database: 15P
+    Content for translation comes from a JSON file: 10P   
+    Session management 10P
+    Encryption better than Cesar (eg Vigenére): 10P
+    Translation more than 2 languages: 10P
+    Use of AJAX 10P
+    Dynamic access of DOM tree (adding or deleting of elements) 15P
+    Base64 translation for transfer to the server (only valid if the process can be verbally explained) 5p
+    Font size scalable 5P
+    Adaptive design 15P
+    Slide show (as an extra, not instead of scrolling) 10P
+    Documentation 10P
+Major downgrading at missing obligatory specifications:
+
+    Layout demands not kept (see below)
+    Missing translation (2 languages min) (-20P)
+    No login function with server side checkup (-20P)
+    Login form not centered (horizontal and vertically) (-10P)
+    Login data from client to server not encrypted (-20P)
+    Encrypted text not displayed (-10P)
+    Page not long enough for scrolling (2 screen pages minimum)(-10P)
+    content missing (-40)
+Further downgrading:
+-15    Non printable character or special character in file- or folder name(s)
+-10    other Chracters than romans in file- or folder name(s)
+-15    Broken links (also in not displayed code)
+-15    Function does not start
+  -5    Login present but buggy (depending on code quality)
+  -5    Commentaries not in english
+
+    Layout fails:
+-5        Specification not kept (for each failed specification)
+-5        Distorted pictures
+-5        Inappropriate ratio between content and viewport
+-5        Pictures not adapted to displayed size (except you can give good reasons for it)
+-10    Redundant code
+-10    Over boarding complexity without good reason
+-10    Use of depreciated tags/attributes
+-10    Abuse of tags (typically table for layout)
+-10    Foreign code not understood, not able to explain
+-5      Author not mentioned at the top of the file (points count per file)
+Single reasons for complete fail:
+    Not marked foreign material
+    Foreign material without reference to the source
+    Anchor tag not understood
