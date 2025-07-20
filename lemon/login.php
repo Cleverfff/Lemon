@@ -62,6 +62,17 @@ if ($result->num_rows > 0) {
 
     // 比较前端传来的加密密码和后端生成的加密密码
     if ($encrypted_password_from_user === $encrypted_password_from_db) {
+        // --- START: ADD THIS CODE ---
+        // 登录成功，启动会话并存储信息
+        session_start();
+        
+        // 存储会话数据
+        $_SESSION['loggedin'] = true;
+        $_SESSION['username'] = $username_from_user;
+        $_SESSION['login_time'] = time(); // 记录当前时间的Unix时间戳
+        $_SESSION['last_activity'] = time(); // 记录最后活动时间，用于超时判断
+        // --- END: ADD THIS CODE ---
+
         echo json_encode(['success' => true]);
     } else {
         echo json_encode(['success' => false, 'message' => 'Incorrect password.']);

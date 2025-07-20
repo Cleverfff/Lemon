@@ -48,3 +48,46 @@
     margin: 0;
     line-height: 1.6;
 }
+
+/* --- Styles for User Status Module in Function Bar --- */
+.user-status-module {
+    background-color: #FFFDF5; /* A slightly different background to stand out */
+    border: 1px solid #BCAAA4;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px; /* Add space between this and other potential modules */
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.user-status-module h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #FFA726;
+    border-bottom: 1px solid #EEE;
+    padding-bottom: 5px;
+}
+
+.user-status-module p {
+    font-size: 0.9em;
+    color: #757575;
+    margin: 5px 0;
+}
+
+.logout-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #FF7043;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.logout-btn:hover {
+    background-color: #E64A19;
+    color: white;
+}

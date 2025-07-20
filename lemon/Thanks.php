@@ -1,3 +1,27 @@
+<?php
+// filepath: c:\Users\97701\Desktop\Lemon\lemon\Thanks.php
+
+// --- SESSION GUARD & TIMEOUT LOGIC ---
+session_start();
+
+// 1. 检查用户是否已登录
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("location: login.html");
+    exit;
+}
+
+// 2. 检查15分钟（900秒）不活动超时
+$inactive_time = 900; 
+if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity']) > $inactive_time) {
+    session_unset();
+    session_destroy();
+    header("location: login.html?reason=session_expired");
+    exit;
+}
+
+// 3. 如果未超时，更新最后活动时间
+$_SESSION['last_activity'] = time();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +54,7 @@
             </ul>
         </section>
 
-        <a href="index.html" class="back-link">Back to Home</a>
+        <a href="index.php" class="back-link">Back to Home</a>
     </div>
 </body>
 </html>

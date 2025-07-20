@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // 5. 处理服务器返回的结果
             if (data.success) {
                 // 登录成功，跳转到主页
-                window.location.href = 'index.html';
+                window.location.href = 'index.php';
             } else {
                 // 登录失败，显示错误信息
                 errorMessage.textContent = data.message || 'Invalid username or password.';
