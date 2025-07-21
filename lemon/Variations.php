@@ -1,115 +1,158 @@
 <?php
-// filepath: c:\Users\97701\Desktop\Lemon\lemon\index.php
-// --- SESSION GUARD & TIMEOUT LOGIC ---
+// filepath: c:\Users\97701\Desktop\Lemon\lemon\Variations.php
+
+// --- SESSION AND LANGUAGE SETUP ---
 session_start();
 
-// 1. 检查用户是否已登录
+$available_langs = [
+    'en' => 'English',
+    'zh' => '中文',
+    'de' => 'Deutsch'
+];
+
+if (!isset($_SESSION['lang'])) {
+    $_SESSION['lang'] = 'en';
+}
+
+if (isset($_GET['lang']) && array_key_exists($_GET['lang'], $available_langs)) {
+    $_SESSION['lang'] = $_GET['lang'];
+    header("Location: " . basename($_SERVER['PHP_SELF']));
+    exit();
+}
+
+$current_lang_code = $_SESSION['lang'];
+$current_lang_name = $available_langs[$current_lang_code];
+
+// --- SECURITY (SESSION GUARD & TIMEOUT) ---
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("location: login.html");
     exit;
 }
 
-// 2. 检查15分钟（900秒）不活动超时
-$inactive_time = 900; 
+$inactive_time = 900;
 if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity']) > $inactive_time) {
-    // 如果超时，销毁会话并重定向
     session_unset();
     session_destroy();
     header("location: login.html?reason=session_expired");
     exit;
 }
-
-// 3. 如果未超时，更新最后活动时间
 $_SESSION['last_activity'] = time();
+
+// --- DATABASE CONNECTION AND TRANSLATION LOADING ---
+$servername = "localhost:3307";
+$db_username = "root";
+$db_password = "123456";
+$dbname = "lemon";
+
+$conn = new mysqli($servername, $db_username, $db_password, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+$conn->set_charset("utf8mb4");
+
+// Define which text groups we need for this page
+$page_keys = ['nav', 'footer', 'common', 'variations']; 
+
+// Include the translation loader
+include __DIR__ . '/translations.php';
+
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Variations - How To Make Lemonade</title>
-    <!-- 链接主样式表 -->
+    <title><?php echo htmlspecialchars($texts['variations_page_title'] ?? 'Variations'); ?></title>
     <link rel="stylesheet" type="text/css" href="index.css">
-    <!-- 链接此页面特定的样式表 -->
     <link rel="stylesheet" type="text/css" href="Variations.css">
 </head>
-
 <body>
     <header class="header">
-        <h1 class="header-title">HTML——How To Make Lemonade</h1>
+        <h1 class="header-title"><?php echo htmlspecialchars($texts['variations_header_title'] ?? 'How To Make Lemonade'); ?></h1>
     </header>
 
     <div class="main-wrapper">
         <nav class="nav">
-            <a href="index.php" class="nav-link">Home</a>
-            <a href="Ingredient.php" class="nav-link">Ingredients</a>
-            <a href="Instructions.php" class="nav-link">Instructions</a>
-            <a href="Tips.php" class="nav-link">Tips</a>
-            <a href="Variations.php" class="nav-link">Variations</a>
+            <a href="index.php" class="nav-link"><?php echo htmlspecialchars($texts['nav_home']); ?></a>
+            <a href="Ingredient.php" class="nav-link"><?php echo htmlspecialchars($texts['nav_ingredients']); ?></a>
+            <a href="Instructions.php" class="nav-link"><?php echo htmlspecialchars($texts['nav_instructions']); ?></a>
+            <a href="Tips.php" class="nav-link"><?php echo htmlspecialchars($texts['nav_tips']); ?></a>
+            <a href="Variations.php" class="nav-link"><?php echo htmlspecialchars($texts['nav_variations']); ?></a>
             <img src="../lemonpics/Lemonade-blog.jpg" alt="Lemonade" class="nav-img">
         </nav>
 
-        <!-- 页面主要内容区 -->
         <main class="container">
-            <h2>Creative Variations</h2>
-            <p>Give your classic lemonade a twist with these fun and flavorful variations.</p>
+            <h2><?php echo htmlspecialchars($texts['variations_main_title']); ?></h2>
+            <p><?php echo htmlspecialchars($texts['variations_main_intro']); ?></p>
             
             <div class="variations-container">
                 <div class="variation-item">
                     <img src="../lemonpics/Strawberry_Lemonade.png" alt="Strawberry Lemonade">
                     <div class="variation-description">
-                        <h3>Strawberry Lemonade</h3>
-                        <p>Blend fresh or frozen strawberries and strain the puree into your classic lemonade for a sweet, pink treat.</p>
+                        <h3><?php echo htmlspecialchars($texts['var1_title']); ?></h3>
+                        <p><?php echo htmlspecialchars($texts['var1_desc']); ?></p>
                     </div>
                 </div>
                 <div class="variation-item">
                     <img src="../lemonpics/Mint_Lemonade.jpeg" alt="Mint Lemonade">
                     <div class="variation-description">
-                        <h3>Mint Lemonade</h3>
-                        <p>Muddle fresh mint leaves at the bottom of your pitcher before adding the other ingredients for a cool, refreshing flavor.</p>
+                        <h3><?php echo htmlspecialchars($texts['var2_title']); ?></h3>
+                        <p><?php echo htmlspecialchars($texts['var2_desc']); ?></p>
                     </div>
                 </div>
                 <div class="variation-item">
                     <img src="../lemonpics/Lavender_Lemonade.jpeg" alt="Lavender Lemonade">
                     <div class="variation-description">
-                        <h3>Lavender Lemonade</h3>
-                        <p>Infuse your simple syrup with dried lavender buds to create an elegant, floral, and calming version of the classic.</p>
+                        <h3><?php echo htmlspecialchars($texts['var3_title']); ?></h3>
+                        <p><?php echo htmlspecialchars($texts['var3_desc']); ?></p>
                     </div>
                 </div>
-                <!-- --- ADDED CONTENT FOR SCROLLING --- -->
                 <div class="variation-item">
                     <img src="../lemonpics/Raspberry_Lemonade.jpeg" alt="Raspberry Lemonade">
                     <div class="variation-description">
-                        <h3>Raspberry Lemonade</h3>
-                        <p>Similar to strawberry, muddle fresh raspberries and add them to the mix for a vibrant color and tart flavor.</p>
+                        <h3><?php echo htmlspecialchars($texts['var4_title']); ?></h3>
+                        <p><?php echo htmlspecialchars($texts['var4_desc']); ?></p>
                     </div>
                 </div>
                 <div class="variation-item">
                     <img src="../lemonpics/Spicy_Ginger_Lemonade.jpeg" alt="Ginger Lemonade">
                     <div class="variation-description">
-                        <h3>Spicy Ginger Lemonade</h3>
-                        <p>Add a few slices of fresh ginger to your simple syrup as it heats. This gives the lemonade a warm, spicy kick.</p>
+                        <h3><?php echo htmlspecialchars($texts['var5_title']); ?></h3>
+                        <p><?php echo htmlspecialchars($texts['var5_desc']); ?></p>
                     </div>
                 </div>
             </div>
         </main>
 
         <aside class="func">
-            <!-- --- USER STATUS MODULE START --- -->
             <div class="user-status-module">
-                <h4>用户状态</h4>
-                <p>用户: <?php echo htmlspecialchars($_SESSION['username']); ?></p>
-                <p>登录于: <?php echo date('Y-m-d H:i:s', $_SESSION['login_time']); ?></p>
-                <a href="logout.php" class="logout-btn">登出</a>
+                <h4><?php echo htmlspecialchars($texts['status_title']); ?></h4>
+                <p><?php echo htmlspecialchars($texts['status_user']); ?> <?php echo htmlspecialchars($_SESSION['username']); ?></p>
+                <p><?php echo htmlspecialchars($texts['status_logintime']); ?> <?php echo date('Y-m-d H:i:s', $_SESSION['login_time']); ?></p>
+                <a href="logout.php" class="logout-btn"><?php echo htmlspecialchars($texts['status_logout_btn']); ?></a>
             </div>
-            <!-- --- USER STATUS MODULE END --- -->
+
+            <div class="language-switcher-module">
+                <h4><?php echo htmlspecialchars($texts['lang_title']); ?></h4>
+                <p><?php echo htmlspecialchars($texts['lang_current']); ?> <?php echo $current_lang_name; ?></p>
+                <div class="language-buttons">
+                    <?php
+                    foreach ($available_langs as $lang_code => $lang_name) {
+                        if ($lang_code !== $current_lang_code) {
+                            echo '<a href="?lang=' . $lang_code . '" class="lang-btn">' . $lang_name . '</a>';
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
         </aside>
     </div>
 
     <footer class="footer">
-        <p>How To Make Lemonade Author: Pan Zitao. <a href="Thanks.php" class="footer-link">Thanks to...</a></p>
+        <p><?php echo htmlspecialchars($texts['footer_author']); ?> <a href="Thanks.php" class="footer-link"><?php echo htmlspecialchars($texts['footer_thanks']); ?></a></p>
     </footer>
 </body>
-
 </html>
+<?php
+$conn->close();
+?>

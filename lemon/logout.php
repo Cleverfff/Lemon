@@ -1,16 +1,16 @@
 <?php
 // filepath: c:\Users\97701\Desktop\Lemon\lemon\logout.php
 
-// 启动会话
+// Start the session
 session_start();
 
-// 取消设置所有的会话变量
+// Unset all of the session variables
 $_SESSION = array();
 
-// 销毁会话
+// Destroy the session
 session_destroy();
 
-// 重定向到登录页面
+// Redirect to login page
 header("location: login.html");
 exit;
 ?>

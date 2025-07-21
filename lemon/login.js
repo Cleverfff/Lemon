@@ -3,21 +3,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorMessage = document.getElementById('error-message');
 
     loginForm.addEventListener('submit', function(event) {
-        // 1. 阻止表单的默认提交行为 (防止页面刷新)
+        // prevents page refresh
         event.preventDefault();
 
-        // 2. 获取用户输入
+        // Get user input
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
-        // 3. 对密码进行一个简单的凯撒密码加密 (向右移动3位)
-        // 这是一个非常基础的加密，仅用于演示目的。
+        // Encrypt the password with a simple Caesar cipher (shift right by 3)
+        // This is a very basic encryption, for demonstration purposes only.
         // 'password' -> 'sdvvzrug'
         const shift = 3;
         let encryptedPassword = "";
         for (let i = 0; i < password.length; i++) {
             let charCode = password.charCodeAt(i);
-            // 只加密字母
+            // Only encrypt letters
             if (charCode >= 97 && charCode <= 122) { // a-z
                 charCode = ((charCode - 97 + shift) % 26) + 97;
             } else if (charCode >= 65 && charCode <= 90) { // A-Z
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             encryptedPassword += String.fromCharCode(charCode);
         }
 
-        // 4. 使用 fetch API 将数据发送到服务器
+        // Use the fetch API to send data to the server
         fetch('login.php', {
             method: 'POST',
             headers: {
@@ -34,18 +34,22 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             body: JSON.stringify({
                 username: username,
-                password: encryptedPassword // 发送加密后的密码
+                password: encryptedPassword // Send the encrypted password
             })
         })
         .then(response => response.json())
         .then(data => {
-            // 5. 处理服务器返回的结果
+            // Handle the server's response
             if (data.success) {
-                // 登录成功，跳转到主页
+
+                // Login successful, redirect to the main page
                 window.location.href = 'index.php';
+
             } else {
-                // 登录失败，显示错误信息
+
+                // Login failed, display the error message
                 errorMessage.textContent = data.message || 'Invalid username or password.';
+            
             }
         })
         .catch(error => {
