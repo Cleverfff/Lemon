@@ -1,5 +1,10 @@
 <?php
-// filepath: c:\Users\97701\Desktop\Lemon\lemon\translations.php
+/**
+ * File: translations.php
+ * Author: Pan Zitao
+ * Date: 2025-07-21
+ * Description: Loads text translations for the Lemonade Guide website.
+ */
 
 /**
  * Translation Loader

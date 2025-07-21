@@ -1,3 +1,10 @@
+/**
+ * File: login.js
+ * Author: Pan Zitao
+ * Date: 2025-07-21
+ * Description: Handles client-side login form submission, password encryption, and AJAX request.
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('login-form');
     const errorMessage = document.getElementById('error-message');

@@ -1,5 +1,10 @@
 <?php
-// filepath: c:\Users\97701\Desktop\Lemon\lemon\login.php
+/**
+ * File: login.php
+ * Author: Pan Zitao
+ * Date: 2025-07-21
+ * Description: Handles the server-side logic for user authentication.
+ */
 
 // --- Database connection information ---
 $servername = "localhost:3307";

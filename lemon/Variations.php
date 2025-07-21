@@ -1,7 +1,12 @@
 <?php
-// filepath: c:\Users\97701\Desktop\Lemon\lemon\Variations.php
+/**
+ * File: Variations.php
+ * Author: Pan Zitao
+ * Date: 2025-07-21
+ * Description: Displays creative variations of the lemonade recipe.
+ */
 
-// --- SESSION AND LANGUAGE SETUP ---
+// --- 1. Initialization & Language Setup ---
 session_start();
 
 $available_langs = [
@@ -14,6 +19,7 @@ if (!isset($_SESSION['lang'])) {
     $_SESSION['lang'] = 'en';
 }
 
+// Handle language change requests from the URL.
 if (isset($_GET['lang']) && array_key_exists($_GET['lang'], $available_langs)) {
     $_SESSION['lang'] = $_GET['lang'];
     header("Location: " . basename($_SERVER['PHP_SELF']));
@@ -23,12 +29,14 @@ if (isset($_GET['lang']) && array_key_exists($_GET['lang'], $available_langs)) {
 $current_lang_code = $_SESSION['lang'];
 $current_lang_name = $available_langs[$current_lang_code];
 
-// --- SECURITY (SESSION GUARD & TIMEOUT) ---
+// --- 2. Security: Session & Activity Check ---
+// Redirect to login if user is not authenticated.
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("location: login.html");
     exit;
 }
 
+// Log out user after 15 minutes of inactivity.
 $inactive_time = 900;
 if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity']) > $inactive_time) {
     session_unset();
@@ -38,7 +46,8 @@ if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity']) >
 }
 $_SESSION['last_activity'] = time();
 
-// --- DATABASE CONNECTION AND TRANSLATION LOADING ---
+// --- 3. Data Fetching ---
+// Establish database connection.
 $servername = "localhost:3307";
 $db_username = "root";
 $db_password = "123456";
@@ -50,18 +59,20 @@ if ($conn->connect_error) {
 }
 $conn->set_charset("utf8mb4");
 
-// Define which text groups we need for this page
+// Load all necessary text translations for this page.
 $page_keys = ['nav', 'footer', 'common', 'variations']; 
 
 // Include the translation loader
 include __DIR__ . '/translations.php';
 
+// The $texts array is now populated and ready for use.
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page title is dynamically set from the database. -->
     <title><?php echo htmlspecialchars($texts['variations_page_title'] ?? 'Variations'); ?></title>
     <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="stylesheet" type="text/css" href="Variations.css">
@@ -73,6 +84,7 @@ include __DIR__ . '/translations.php';
 
     <div class="main-wrapper">
         <nav class="nav">
+            <!-- Navigation links are dynamically populated with translated text. -->
             <a href="index.php" class="nav-link"><?php echo htmlspecialchars($texts['nav_home']); ?></a>
             <a href="Ingredient.php" class="nav-link"><?php echo htmlspecialchars($texts['nav_ingredients']); ?></a>
             <a href="Instructions.php" class="nav-link"><?php echo htmlspecialchars($texts['nav_instructions']); ?></a>
@@ -82,6 +94,7 @@ include __DIR__ . '/translations.php';
         </nav>
 
         <main class="container">
+            <!-- All main content is fetched from the database. -->
             <h2><?php echo htmlspecialchars($texts['variations_main_title']); ?></h2>
             <p><?php echo htmlspecialchars($texts['variations_main_intro']); ?></p>
             
@@ -125,6 +138,7 @@ include __DIR__ . '/translations.php';
         </main>
 
         <aside class="func">
+            <!-- User status module displays session information. -->
             <div class="user-status-module">
                 <h4><?php echo htmlspecialchars($texts['status_title']); ?></h4>
                 <p><?php echo htmlspecialchars($texts['status_user']); ?> <?php echo htmlspecialchars($_SESSION['username']); ?></p>
@@ -132,6 +146,7 @@ include __DIR__ . '/translations.php';
                 <a href="logout.php" class="logout-btn"><?php echo htmlspecialchars($texts['status_logout_btn']); ?></a>
             </div>
 
+            <!-- Language switcher is dynamically generated. -->
             <div class="language-switcher-module">
                 <h4><?php echo htmlspecialchars($texts['lang_title']); ?></h4>
                 <p><?php echo htmlspecialchars($texts['lang_current']); ?> <?php echo $current_lang_name; ?></p>
@@ -154,5 +169,7 @@ include __DIR__ . '/translations.php';
 </body>
 </html>
 <?php
+// --- 4. Cleanup ---
+// Close the database connection to free up resources.
 $conn->close();
 ?>

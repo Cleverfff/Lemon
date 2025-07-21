@@ -1,5 +1,10 @@
 <?php
-// filepath: c:\Users\97701\Desktop\Lemon\lemon\logout.php
+/**
+ * File: logout.php
+ * Author: Pan Zitao
+ * Date: 2025-07-21
+ * Description: Handles the server-side logic for user logout.
+ */
 
 // Start the session
 session_start();

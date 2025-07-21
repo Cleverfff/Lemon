@@ -1,7 +1,12 @@
 <?php
-// filepath: c:\Users\97701\Desktop\Lemon\lemon\index.php
+/**
+ * File: index.php
+ * Author: Pan Zitao
+ * Date: 2025-07-21
+ * Description: Main homepage for the Lemonade Guide application.
+ */
 
-// --- 1. SESSION AND LANGUAGE SETUP ---
+// --- 1. Initialization & Language Setup ---
 session_start();
 
 $available_langs = [
@@ -14,6 +19,7 @@ if (!isset($_SESSION['lang'])) {
     $_SESSION['lang'] = 'en';
 }
 
+// Handle language change requests from the URL.
 if (isset($_GET['lang']) && array_key_exists($_GET['lang'], $available_langs)) {
     $_SESSION['lang'] = $_GET['lang'];
     header("Location: " . basename($_SERVER['PHP_SELF']));
@@ -23,12 +29,14 @@ if (isset($_GET['lang']) && array_key_exists($_GET['lang'], $available_langs)) {
 $current_lang_code = $_SESSION['lang'];
 $current_lang_name = $available_langs[$current_lang_code];
 
-// --- 2. SECURITY (SESSION GUARD & TIMEOUT) ---
+// --- 2. Security: Session & Activity Check ---
+// Redirect to login if user is not authenticated.
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("location: login.html");
     exit;
 }
 
+// Log out user after 15 minutes of inactivity.
 $inactive_time = 900;
 if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity']) > $inactive_time) {
     session_unset();
@@ -36,25 +44,25 @@ if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity']) >
     header("location: login.html?reason=session_expired");
     exit;
 }
+
 $_SESSION['last_activity'] = time();
 
-// --- 3. DATABASE CONNECTION AND TRANSLATION LOADING ---
-// Database connection details
+// --- 3. Data Fetching ---
+// Establish database connection.
 $servername = "localhost:3307";
 $db_username = "root";
 $db_password = "123456";
 $dbname = "lemon";
 
-// Create connection
 $conn = new mysqli($servername, $db_username, $db_password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
 // Ensure characters are handled correctly
 $conn->set_charset("utf8mb4");
 
-// Define which text groups we need for this page
-// FIX: Add 'common' to the array to load texts for the function bar
+// Load all necessary text translations for this page.
 $page_keys = ['nav', 'footer', 'home', 'common']; 
 
 // Include the translation loader to fetch the texts
@@ -63,26 +71,24 @@ include __DIR__ . '/translations.php';
 
 // The $texts array is now available for use below
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <!-- Using the new, specific key -->
     <title><?php echo htmlspecialchars($texts['home_header_title'] ?? 'How To Make Lemonade'); ?></title>
     <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
-    <div class="header">
-        <header>
-            <!-- Using the new, specific key -->
-            <div class="header-title"><?php echo htmlspecialchars($texts['home_header_title'] ?? 'Lemonade Guide'); ?></div>
-        </header>
-    </div>
+    <header class="header">
+        <h1 class="header-title"><?php echo htmlspecialchars($texts['home_header_title'] ?? 'Lemonade Guide'); ?></h1>
+    </header>
 
     <div class="main-wrapper">
         <nav class="nav">
-            <!-- Replacing all navigation links with translated text -->
+            <!-- Navigation links are dynamically populated with translated text. -->
             <a href="index.php" class="nav-link"><?php echo htmlspecialchars($texts['nav_home']); ?></a>
             <a href="Ingredient.php" class="nav-link"><?php echo htmlspecialchars($texts['nav_ingredients']); ?></a>
             <a href="Instructions.php" class="nav-link"><?php echo htmlspecialchars($texts['nav_instructions']); ?></a>
@@ -92,11 +98,10 @@ include __DIR__ . '/translations.php';
         </nav>
 
         <main class="container">
-            <!-- Using the new, specific keys -->
+            <!-- All main content is fetched from the database. -->
             <h2><?php echo htmlspecialchars($texts['home_main_title']); ?></h2>
             <p><?php echo htmlspecialchars($texts['home_main_intro']); ?></p>
-
-            <!-- All content blocks are now translated -->
+            
             <div class="content-block">
                 <img src="../lemonpics/lemonade.png" alt="Lemons and Sugar">
                 <div class="text-block">
@@ -133,6 +138,7 @@ include __DIR__ . '/translations.php';
         </main>
 
         <aside class="func">
+            <!-- User status module displays session information. -->
             <div class="user-status-module">
                 <h4><?php echo htmlspecialchars($texts['status_title']); ?></h4>
                 <p><?php echo htmlspecialchars($texts['status_user']); ?> <?php echo htmlspecialchars($_SESSION['username']); ?></p>
@@ -140,6 +146,7 @@ include __DIR__ . '/translations.php';
                 <a href="logout.php" class="logout-btn"><?php echo htmlspecialchars($texts['status_logout_btn']); ?></a>
             </div>
 
+            <!-- Language switcher is dynamically generated. -->
             <div class="language-switcher-module">
                 <h4><?php echo htmlspecialchars($texts['lang_title']); ?></h4>
                 <p><?php echo htmlspecialchars($texts['lang_current']); ?> <?php echo $current_lang_name; ?></p>
@@ -157,12 +164,12 @@ include __DIR__ . '/translations.php';
     </div>
 
     <footer class="footer">
-        <!-- Using translated text for the footer -->
         <p><?php echo htmlspecialchars($texts['footer_author']); ?> <a href="Thanks.php" class="footer-link"><?php echo htmlspecialchars($texts['footer_thanks']); ?></a></p>
     </footer>
 </body>
 </html>
 <?php
-// Close the database connection at the end of the script
+// --- 4. Cleanup ---
+// Close the database connection to free up resources.
 $conn->close();
 ?>
