@@ -90,7 +90,7 @@ include __DIR__ . '/translations.php';
             <a href="Instructions.php" class="nav-link"><?php echo htmlspecialchars($texts['nav_instructions']); ?></a>
             <a href="Tips.php" class="nav-link"><?php echo htmlspecialchars($texts['nav_tips']); ?></a>
             <a href="Variations.php" class="nav-link"><?php echo htmlspecialchars($texts['nav_variations']); ?></a>
-            <img src="../lemonpics/Lemonade-blog.jpg" alt="Lemonade" class="nav-img">
+            <img src="lemonpics/Pitcher of Lemonade.jpg" alt="Lemonade" class="nav-img">
         </nav>
 
         <main class="container">

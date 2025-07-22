@@ -1,21 +1,16 @@
-<!--
- * File: login.html
- * Author: Pan Zitao
- * Date: 2025-07-21
- * Description: Provides the HTML structure and form for the user login page.
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - How To Make Lemonade</title>
+    <title>Register - How To Make Lemonade</title>
+    <!-- We can reuse login.css because the style is very similar -->
     <link rel="stylesheet" type="text/css" href="login.css">
 </head>
 <body>
     <div class="login-container">
-        <h2>Login</h2>
-        <form id="login-form">
+        <h2>Register</h2>
+        <form id="register-form">
             <div class="form-group">
                 <label for="username">Account</label>
                 <input type="text" id="username" name="username" required>
@@ -24,16 +19,17 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit" class="login-btn">Login</button>
-            <p id="error-message" class="error-message"></p>
-            
-            <div class="register-link">
-                <p>Still have no account? <a href="register.html">register here</a></p>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
             </div>
-
-
+            <button type="submit" class="login-btn">Register</button>
+            <p id="error-message" class="error-message"></p>
+            <div class="register-link">
+                <p>Already have an account? <a href="login.html">Login here</a></p>
+            </div>
         </form>
     </div>
-    <script src="login.js"></script>
+    <script src="register.js"></script>
 </body>
 </html>

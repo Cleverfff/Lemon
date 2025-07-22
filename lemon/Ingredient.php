@@ -91,7 +91,7 @@ include __DIR__ . '/translations.php';
             <a href="Instructions.php" class="nav-link"><?php echo htmlspecialchars($texts['nav_instructions']); ?></a>
             <a href="Tips.php" class="nav-link"><?php echo htmlspecialchars($texts['nav_tips']); ?></a>
             <a href="Variations.php" class="nav-link"><?php echo htmlspecialchars($texts['nav_variations']); ?></a>
-            <img src="../lemonpics/Lemonade-blog.jpg" alt="Lemonade" class="nav-img">
+            <img src="lemonpics/Pitcher of Lemonade.jpg" alt="Lemonade" class="nav-img">
         </nav>
 
         <main class="container">
@@ -101,37 +101,37 @@ include __DIR__ . '/translations.php';
             
             <div class="ingredient-list">
                 <div class="ingredient-item">
-                    <img src="../lemonpics/lemon.png" alt="Fresh Lemons">
+                    <img src="lemonpics/Fresh Lemons.jpg" alt="Fresh Lemons" style="width: 80%; height: auto;">
                     <h3><?php echo htmlspecialchars($texts['item1_title']); ?></h3>
                     <p><?php echo htmlspecialchars($texts['item1_desc']); ?></p>
                 </div>
                 <div class="ingredient-item">
-                    <img src="../lemonpics/water.jpeg" alt="Water">
+                    <img src="lemonpics/Water.jpg" alt="Water" style="width: 80%; height: auto;">
                     <h3><?php echo htmlspecialchars($texts['item2_title']); ?></h3>
                     <p><?php echo htmlspecialchars($texts['item2_desc']); ?></p>
                 </div>
                 <div class="ingredient-item">
-                    <img src="../lemonpics/suger.jpeg" alt="Sugar" style="width: 50%;">
+                    <img src="lemonpics/Sugar.jpg" alt="Sugar" style="width: 80%; height: auto;">
                     <h3><?php echo htmlspecialchars($texts['item3_title']); ?></h3>
                     <p><?php echo htmlspecialchars($texts['item3_desc']); ?></p>
                 </div>
                  <div class="ingredient-item">
-                    <img src="../lemonpics/Ice_cubes.jpeg" alt="Ice Cubes" style="width: 50%;">
+                    <img src="lemonpics/Ice Cubes.jpg" alt="Ice Cubes" style="width: 80%; height: auto;">
                     <h3><?php echo htmlspecialchars($texts['item4_title']); ?></h3>
                     <p><?php echo htmlspecialchars($texts['item4_desc']); ?></p>
                 </div>
                 <div class="ingredient-item">
-                    <img src="../lemonpics/Mint_Lemonade.jpeg" alt="Mint for Garnish">
+                    <img src="lemonpics/Mint for Garnish.jpg" alt="Mint for Garnish" style="width: 80%; height: auto;">
                     <h3><?php echo htmlspecialchars($texts['item5_title']); ?></h3>
                     <p><?php echo htmlspecialchars($texts['item5_desc']); ?></p>
                 </div>
                 <div class="ingredient-item">
-                    <img src="../lemonpics/Honey.jpeg" alt="Honey" style="width: 50%;">
+                    <img src="lemonpics/Honey.jpg" alt="Honey" style="width: 80%; height: auto;">
                     <h3><?php echo htmlspecialchars($texts['item6_title']); ?></h3>
                     <p><?php echo htmlspecialchars($texts['item6_desc']); ?></p>
                 </div>
                 <div class="ingredient-item">
-                    <img src="../lemonpics/Lemonade_stand.jpeg" alt="Lemonade Stand">
+                    <img src="lemonpics/Lemonade Stand.jpg" alt="Lemonade Stand" style="width: 80%; height: auto;">
                     <h3><?php echo htmlspecialchars($texts['item7_title']); ?></h3>
                     <p><?php echo htmlspecialchars($texts['item7_desc']); ?></p>
                 </div>

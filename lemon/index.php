@@ -94,7 +94,7 @@ include __DIR__ . '/translations.php';
             <a href="Instructions.php" class="nav-link"><?php echo htmlspecialchars($texts['nav_instructions']); ?></a>
             <a href="Tips.php" class="nav-link"><?php echo htmlspecialchars($texts['nav_tips']); ?></a>
             <a href="Variations.php" class="nav-link"><?php echo htmlspecialchars($texts['nav_variations']); ?></a>
-            <img src="../lemonpics/Lemonade-blog.jpg" alt="Lemonade" class="nav-img">
+            <img src="lemonpics/Pitcher of Lemonade.jpg" alt="Lemonade" class="nav-img">
         </nav>
 
         <main class="container">
@@ -103,7 +103,7 @@ include __DIR__ . '/translations.php';
             <p><?php echo htmlspecialchars($texts['home_main_intro']); ?></p>
             
             <div class="content-block">
-                <img src="../lemonpics/lemonade.png" alt="Lemons and Sugar">
+                <img src="lemonpics/Lemons and Sugar.jpg" alt="Lemons and Sugar" style="width: 80%; height: auto;">
                 <div class="text-block">
                     <h3><?php echo htmlspecialchars($texts['block1_title']); ?></h3>
                     <p><?php echo htmlspecialchars($texts['block1_text']); ?></p>
@@ -111,7 +111,7 @@ include __DIR__ . '/translations.php';
             </div>
 
             <div class="content-block">
-                <img src="../lemonpics/lemon_2.png" alt="Pitcher of Lemonade">
+                <img src="lemonpics/Pitcher of Lemonade.jpg" alt="Pitcher of Lemonade" style="width: 80%; height: auto;">
                 <div class="text-block">
                     <h3><?php echo htmlspecialchars($texts['block2_title']); ?></h3>
                     <p><?php echo htmlspecialchars($texts['block2_text']); ?></p>
@@ -119,7 +119,7 @@ include __DIR__ . '/translations.php';
             </div>
 
             <div class="content-block">
-                <img src="../lemonpics/lemon_1.png" alt="Glass of homemade lemonade">
+                <img src="lemonpics/Glass of homemade lemonade.jpg" alt="Glass of homemade lemonade" style="width: 80%; height: auto;">
                 <div class="text-block">
                     <h3><?php echo htmlspecialchars($texts['block3_title']); ?></h3>
                     <p><?php echo htmlspecialchars($texts['block3_text']); ?></p>
@@ -127,7 +127,7 @@ include __DIR__ . '/translations.php';
             </div>
 
             <div class="content-block">
-                <img src="../lemonpics/Lemonade-blog.jpg" alt="Juicer and pitcher">
+                <img src="lemonpics/Juicer and pitcher.jpg" alt="Juicer and pitcher" style="width: 80%; height: auto;">
                 <div class="text-block">
                     <h3><?php echo htmlspecialchars($texts['block4_title']); ?></h3>
                     <p><?php echo htmlspecialchars($texts['block4_text']); ?></p>

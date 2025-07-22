@@ -90,7 +90,7 @@ include __DIR__ . '/translations.php';
             <a href="Instructions.php" class="nav-link"><?php echo htmlspecialchars($texts['nav_instructions']); ?></a>
             <a href="Tips.php" class="nav-link"><?php echo htmlspecialchars($texts['nav_tips']); ?></a>
             <a href="Variations.php" class="nav-link"><?php echo htmlspecialchars($texts['nav_variations']); ?></a>
-            <img src="../lemonpics/Lemonade-blog.jpg" alt="Lemonade" class="nav-img">
+            <img src="lemonpics/Pitcher of Lemonade.jpg" alt="Lemonade" class="nav-img">
         </nav>
 
         <main class="container">
@@ -100,35 +100,35 @@ include __DIR__ . '/translations.php';
             
             <div class="variations-container">
                 <div class="variation-item">
-                    <img src="../lemonpics/Strawberry_Lemonade.png" alt="Strawberry Lemonade">
+                    <img src="lemonpics/Strawberry Lemonade.jpg" alt="Strawberry Lemonade" style="width: 80%; height: auto;">
                     <div class="variation-description">
                         <h3><?php echo htmlspecialchars($texts['var1_title']); ?></h3>
                         <p><?php echo htmlspecialchars($texts['var1_desc']); ?></p>
                     </div>
                 </div>
                 <div class="variation-item">
-                    <img src="../lemonpics/Mint_Lemonade.jpeg" alt="Mint Lemonade">
+                    <img src="lemonpics/Mint Lemonade.jpg" alt="Mint Lemonade" style="width: 80%; height: auto;">
                     <div class="variation-description">
                         <h3><?php echo htmlspecialchars($texts['var2_title']); ?></h3>
                         <p><?php echo htmlspecialchars($texts['var2_desc']); ?></p>
                     </div>
                 </div>
                 <div class="variation-item">
-                    <img src="../lemonpics/Lavender_Lemonade.jpeg" alt="Lavender Lemonade">
+                    <img src="lemonpics/Lavender Lemonade.jpg" alt="Lavender Lemonade" style="width: 80%; height: auto;">
                     <div class="variation-description">
                         <h3><?php echo htmlspecialchars($texts['var3_title']); ?></h3>
                         <p><?php echo htmlspecialchars($texts['var3_desc']); ?></p>
                     </div>
                 </div>
                 <div class="variation-item">
-                    <img src="../lemonpics/Raspberry_Lemonade.jpeg" alt="Raspberry Lemonade">
+                    <img src="lemonpics/Raspberry Lemonade.jpg" alt="Raspberry Lemonade" style="width: 80%; height: auto;">
                     <div class="variation-description">
                         <h3><?php echo htmlspecialchars($texts['var4_title']); ?></h3>
                         <p><?php echo htmlspecialchars($texts['var4_desc']); ?></p>
                     </div>
                 </div>
                 <div class="variation-item">
-                    <img src="../lemonpics/Spicy_Ginger_Lemonade.jpeg" alt="Ginger Lemonade">
+                    <img src="lemonpics/Ginger Lemonade.jpg" alt="Ginger Lemonade" style="width: 80%; height: auto;">
                     <div class="variation-description">
                         <h3><?php echo htmlspecialchars($texts['var5_title']); ?></h3>
                         <p><?php echo htmlspecialchars($texts['var5_desc']); ?></p>

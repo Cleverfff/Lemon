@@ -1,33 +1,41 @@
 /**
- * File: login.js
+ * File: register.js
  * Author: Pan Zitao
- * Date: 2025-07-21
- * Description: Handles client-side login form submission, password encryption, and AJAX request.
+ * Date: 2025-07-22
+ * Description: Handles client-side registration, including password validation, encryption, and submission.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
     const errorMessage = document.getElementById('error-message');
 
-    loginForm.addEventListener('submit', function(event) {
-        // prevents page refresh
+    registerForm.addEventListener('submit', function(event) {
         event.preventDefault();
 
-        // Get user input
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirm-password').value;
+
+        // --- Client-side validation ---
+        if (!username || !password || !confirmPassword) {
+            errorMessage.textContent = 'All fields are required.';
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            errorMessage.textContent = 'Passwords do not match.';
+            return;
+        }
 
         // Encrypt the password with the Vigenère cipher using the key "lemon".
-        // This method handles uppercase letters, lowercase letters, and numbers.
         const key = "lemon";
         let encryptedPassword = "";
         for (let i = 0; i < password.length; i++) {
             let pCharCode = password.charCodeAt(i);
             const kChar = key[i % key.length].toLowerCase();
-            const shift = kChar.charCodeAt(0) - 'a'.charCodeAt(0); // Get shift amount (0-25) from key
+            const shift = kChar.charCodeAt(0) - 'a'.charCodeAt(0);
 
             let cCharCode;
-
             if (pCharCode >= 97 && pCharCode <= 122) { // a-z
                 cCharCode = ((pCharCode - 97 + shift) % 26) + 97;
             } else if (pCharCode >= 65 && pCharCode <= 90) { // A-Z
@@ -35,14 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (pCharCode >= 48 && pCharCode <= 57) { // 0-9
                 cCharCode = ((pCharCode - 48 + shift) % 10) + 48;
             } else {
-                // For other characters (symbols, etc.), do not encrypt them.
                 cCharCode = pCharCode;
             }
             encryptedPassword += String.fromCharCode(cCharCode);
         }
 
         // Use the fetch API to send data to the server
-        fetch('login.php', {
+        fetch('register.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -54,17 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(response => response.json())
         .then(data => {
-            // Handle the server's response
             if (data.success) {
-
-                // Login successful, redirect to the main page
-                window.location.href = 'index.php';
-
+                // Redirect to login page after successful registration
+                alert('Registration successful! You can now log in.');
+                window.location.href = 'login.html';
             } else {
-
-                // Login failed, display the error message
-                errorMessage.textContent = data.message || 'Invalid username or password.';
-            
+                // Display error message from the server
+                errorMessage.textContent = data.message || 'Registration failed. Please try again.';
             }
         })
         .catch(error => {

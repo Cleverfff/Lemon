@@ -79,8 +79,24 @@ body {
 }
 
 .error-message {
-    color: #FF7043;
-    text-align: center;
+    color: #D32F2F;
     margin-top: 15px;
-    height: 1em;
+    height: 1em; /* Reserve space to prevent layout shift */
+    text-align: center;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+.register-link a {
+    color: #FF7043;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
 }

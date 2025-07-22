@@ -80,9 +80,11 @@ include __DIR__ . '/translations.php';
             <ul>
                 <li>
                     <strong><?php echo htmlspecialchars($texts['thanks_image1_credit']); ?></strong> 
-                    <a href="https://bellyfull.net/homemade-lemonade-recipe/" target="_blank" rel="noopener noreferrer">bellyfull.net</a>
+                    <a href="https://www.pexels.com/" target="_blank" rel="noopener noreferrer">Pexels.com</a>
                 </li>
-                <!-- Add other image sources here -->
+                <li>
+                    <strong><?php echo htmlspecialchars($texts['thanks_pexels_license']); ?></strong> 
+                </li>
             </ul>
         </section>
 
