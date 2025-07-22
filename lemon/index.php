@@ -149,12 +149,13 @@ include __DIR__ . '/translations.php';
             <!-- Language switcher is dynamically generated. -->
             <div class="language-switcher-module">
                 <h4><?php echo htmlspecialchars($texts['lang_title']); ?></h4>
-                <p><?php echo htmlspecialchars($texts['lang_current']); ?> <?php echo $current_lang_name; ?></p>
+                <p><?php echo htmlspecialchars($texts['lang_current']); ?> <span id="current-lang-name"><?php echo $current_lang_name; ?></span></p>
                 <div class="language-buttons">
                     <?php
                     foreach ($available_langs as $lang_code => $lang_name) {
                         if ($lang_code !== $current_lang_code) {
-                            echo '<a href="?lang=' . $lang_code . '" class="lang-btn">' . $lang_name . '</a>';
+                            // Add class="lang-switch-btn" and data-lang attribute
+                            echo '<a href="?lang=' . $lang_code . '" class="lang-btn lang-switch-btn" data-lang="' . $lang_code . '">' . $lang_name . '</a>';
                         }
                     }
                     ?>
@@ -166,6 +167,7 @@ include __DIR__ . '/translations.php';
     <footer class="footer">
         <p><?php echo htmlspecialchars($texts['footer_author']); ?> <a href="Thanks.php" class="footer-link"><?php echo htmlspecialchars($texts['footer_thanks']); ?></a></p>
     </footer>
+    <script src="language_switcher.js"></script>
 </body>
 </html>
 <?php

@@ -7,6 +7,7 @@ This project is a fully functional, database-driven website created as a guide f
 ## Core Features
 
 *   **User Authentication (Login & Registration)**: Secure user login and registration system. Passwords are encrypted on the client-side before being sent to the server.
+*   **AJAX-Powered Interactions**: Both user authentication and language switching are handled via AJAX (`fetch` API), providing a smoother user experience without full page reloads for form submissions.
 *   **Session Management**: Users are automatically logged out after 15 minutes of inactivity to enhance security.
 *   **Multi-language Support**: The content dynamically switches between English, Chinese (中文), and German (Deutsch). All text is fetched from a database.
 
@@ -44,7 +45,7 @@ The primary security measure is the protection of user credentials.
             password VARCHAR(255) NOT NULL
         );
         ```
-    *   Insert a sample user (the password is in plaintext in the DB):
+    *   Insert a sample user (the password is inplaintext in the DB):
         ```sql
         INSERT INTO users (username, password) VALUES ('testuser', 'password123');
         ```
@@ -81,6 +82,8 @@ The primary security measure is the protection of user credentials.
 *   `login.html` / `register.html`: User authentication pages.
 *   `login.js` / `register.js`: Client-side logic for authentication.
 *   `login.php` / `register.php`: Server-side logic for authentication.
+*   `language_switcher.js`: Handles the AJAX request for changing the language.
+*   `switch_language.php`: The backend endpoint for the AJAX language switch.
 *   `logout.php`: Destroys the session to log the user out.
 *   `index.php`, `Ingredient.php`, `Instructions.php`, `Tips.php`, `Variations.php`, `Thanks.php`: The main content pages.
 *   `translations.php`: A helper script to fetch text from the database.
