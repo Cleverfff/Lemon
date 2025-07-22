@@ -1,90 +1,121 @@
-# Lemonade Guide Website - Project Presentation
-## 柠檬水指南网站 - 项目展示
+# Lemonade Guide Website - A User Journey Presentation
+## 柠檬水指南网站 - 一次用户旅程的演示
 
 **Presenter / 演示者:** Pan Zitao
 
 ---
 
-## 1. Project Overview & Key Features
-## 项目概述与核心功能
+## Introduction | 介绍
 
-**EN:** Good morning. Today I'm presenting my "Lemonade Guide" website. This is a fully functional, database-driven project that demonstrates a range of modern web development skills. The key features include:
-*   **Secure User Authentication**: A complete login and registration system with client-side password encryption.
-*   **AJAX-Powered Interactions**: Key functions like login, registration, and language switching are handled asynchronously, providing a smooth, modern user experience.
-*   **Dynamic, Multi-language Content**: All text is loaded from a MySQL database, and the site supports English, Chinese, and German.
+**EN:** Good morning. Instead of just listing features, I'd like to take you on a journey through my "Lemonade Guide" website, showing how different technologies work together at each step to create a secure, dynamic, and user-friendly experience.
 
-**ZH:** 早上好。今天我将展示我的“柠檬水指南”网站。这是一个功能齐全、由数据库驱动的项目，展示了一系列现代 Web 开发技能。其核心功能包括：
-*   **安全的用户认证**: 包含客户端密码加密的、完整的登录与注册系统。
-*   **AJAX 驱动的交互**: 登录、注册和语言切换等关键功能均通过异步处理，提供了流畅的现代化用户体验。
-*   **动态、多语言内容**: 所有文本都从 MySQL 数据库加载，网站支持英语、中文和德语。
+**ZH:** 早上好。今天，我不想仅仅罗列功能，而是想带您一同体验一次完整的“柠檬水指南”网站的用户旅程，向您展示在每一步中，不同的技术是如何协同工作，从而创造出安全、动态且用户友好的体验。
 
 ---
 
-## 2. Fulfillment of Core Requirements (100 Points)
-## 核心需求完成情况 (100分)
+## Part 1: The Authentication Journey | 第一部分：认证之旅
 
-### Layout & Navigation | 布局与导航
+### Step 1: The Login | 第1步：登录
 
-**EN:** The project fulfills all layout requirements.
-*   **Structure**: The layout consists of a full-width header and footer, with a three-column main section (Navigation, Content, Functions) as specified. This is achieved using CSS Flexbox in `index.css`.
-*   **Sticky Sidebars**: Both the left navigation and right function sidebars use `position: sticky`, ensuring they remain visible while the user scrolls through the content.
+**EN:** Our journey begins at the login page. When the user enters their credentials and clicks "Login", a series of advanced processes happen instantly.
 
-**ZH:** 项目满足了所有的布局要求。
-*   **结构**: 布局由全宽的页眉和页脚，以及一个三栏式的主体部分（导航、内容、功能区）组成，完全符合要求。这是通过 `index.css` 中的 CSS Flexbox 实现的。
-*   **粘性侧边栏**: 左侧导航和右侧功能区都使用了 `position: sticky` 属性，确保用户在滚动内容时它们始终可见。
+1.  **Client-Side Encryption (Vigenère Cipher):** First, to ensure security, the password is **never** sent in plain text. The `login.js` script intercepts the form submission, encrypts the password using a Vigenère cipher with the key "lemon", and prepares it for transmission.
 
-### Content & Security | 内容与安全
+2.  **AJAX Submission (`fetch` API):** Next, instead of a traditional page reload, `login.js` uses the `fetch` API to send the username and the **encrypted** password to `login.php` asynchronously. This provides a smooth, modern login experience.
 
-**EN:**
-*   **Page Length & Login Protection**: All content pages are long enough to require scrolling. Access is protected by a session check in each PHP file, which redirects unauthenticated users to `login.html`.
-*   **Client-Side Encryption**: To enhance security, the user's password is never sent in plain text. In `login.js` and `register.js`, the password is encrypted using a Vigenère cipher before being sent to the server via an AJAX request.
-*   **Server-Side Verification**: The `login.php` script receives the encrypted password. It then fetches the plain-text password from the database, applies the *exact same* encryption, and only grants access if the two encrypted strings match. This is a secure verification method.
-*   **Citing Sources**: The `Thanks.php` page explicitly gives credit to Pexels.com for all images, fulfilling the critical requirement to cite external materials.
+3.  **Secure Server-Side Verification:** The `login.php` script receives the encrypted data. It fetches the user's plain-text password from the database, applies the **exact same** Vigenère encryption, and compares the two encrypted strings. Access is granted only if they match. This is a secure way to verify credentials without ever exposing or storing decrypted passwords on the server during login.
 
-**ZH:**
-*   **页面长度与登录保护**: 所有内容页面都足够长，需要滚动浏览。每个 PHP 文件开头的会话检查保护了页面访问，未登录的用户会被重定向到 `login.html`。
-*   **客户端加密**: 为增强安全性，用户的密码绝不会以明文形式传输。在 `login.js` 和 `register.js` 中，密码在通过 AJAX 请求发送到服务器前，会使用维吉尼亚密码进行加密。
-*   **服务器端验证**: `login.php` 脚本接收加密后的密码。然后，它从数据库中获取明文密码，应用完全相同的加密算法，只有当两个加密字符串匹配时才授权访问。这是一种安全可靠的验证方法。
-*   **引用来源**: `Thanks.php` 页面明确地将所有图片的功劳归于 Pexels.com，满足了引用外部材料的关键要求。
+4.  **Dynamic DOM Feedback:** If login fails, the server sends back a JSON error message. `login.js` dynamically updates the content of the error message element on the page using `.textContent`, providing instant feedback without a page refresh.
+
+**ZH:** 我们的旅程从登录页面开始。当用户输入凭据并点击“登录”时，一系列先进的流程瞬间启动。
+
+1.  **客户端加密 (维吉尼亚密码):** 首先，为确保安全，密码**绝不会**以明文形式发送。`login.js` 脚本会拦截表单提交，使用密钥为 "lemon" 的维吉尼亚密码对密码进行加密，并准备传输。
+
+2.  **AJAX 提交 (`fetch` API):** 接着，`login.js` 使用 `fetch` API 将用户名和**加密后**的密码异步发送到 `login.php`，替代了传统的页面刷新，提供了流畅、现代的登录体验。
+
+3.  **安全的服务端验证:** `login.php` 脚本接收加密数据。它从数据库中获取用户的明文密码，应用**完全相同**的维吉尼亚加密算法，并比较两个加密后的字符串。只有在它们匹配时，访问才被授权。这是一种安全的凭证验证方式，在登录期间无需在服务器上暴露或存储解密后的密码。
+
+4.  **动态 DOM 反馈:** 如果登录失败，服务器会返回一个 JSON 格式的错误信息。`login.js` 会动态地更新页面上错误信息元素的文本内容，无需刷新页面即可提供即时反馈。
+
+*(**Note:** The registration process follows a similar secure flow, with the addition of checking for username availability and decrypting the password before storing it, to maintain compatibility with the login system.)*
+*(**备注:** 注册流程也遵循类似的安全流，但增加了检查用户名是否可用以及将密码解密后再存储的步骤，以保持与登录系统的兼容性。)*
 
 ---
 
-## 3. Upgrades & Additional Points (95 Points)
-## 附加功能与加分项 (95分)
+## Part 2: The Main Interface Journey | 第二部分：主界面之旅
 
-### Data-Driven Content & Session Management (25P)
-### 数据驱动内容与会话管理 (25分)
+### Step 2: Entering the Main Site | 第2步：进入主站
 
-**EN:**
-*   **Content from Database (15P)**: All text on the site is dynamic. The `translations.php` script fetches content from the `translations` table based on the current session language (`$_SESSION['lang']`), making the site fully database-driven.
-*   **Session Management (10P)**: The project features robust session management, including a 15-minute inactivity timeout that automatically logs the user out for security.
+**EN:** Upon successful login, the user is redirected to the main content area. Here, efficiency and good structure are key.
 
-**ZH:**
-*   **内容来自数据库 (15P)**: 网站上的所有文本都是动态的。`translations.php` 脚本根据当前的会话语言 (`$_SESSION['lang']`) 从 `translations` 表中获取内容，使网站完全由数据库驱动。
-*   **会话管理 (10P)**: 项目具有强大的会话管理功能，包括一个15分钟无活动自动登出的安全机制。
+1.  **Centralized Initialization (`init.php`):** To avoid code duplication, every content page (`index.php`, `Ingredient.php`, etc.) starts by including a single file: `init.php`. This powerful script handles everything:
+    *   It starts the session (`session_start()`).
+    *   It performs security checks (is the user logged in? has the session expired?).
+    *   It sets up the language environment.
+    *   It establishes the database connection.
+    This makes the project highly maintainable.
 
-### Advanced Features & Interactivity (35P)
-### 高级功能与交互性 (35分)
+2.  **Data-Driven Content:** All text is loaded dynamically from our MySQL database. After `init.php`, each page includes `translations.php`, which queries the database based on the session language (`$_SESSION['lang']`) and populates a `$texts` array. This array is then used to display all content, making the site fully manageable and multi-lingual.
 
-**EN:**
-*   **Advanced Encryption (10P)**: I used the Vigenère cipher, which is a polyalphabetic cipher and significantly more secure than a basic Caesar cipher.
-*   **AJAX Usage (10P)**: AJAX is used extensively. Not only for login and registration, but also for the language switching feature. In `language_switcher.js`, a `fetch` request is sent to `switch_language.php` to update the session without a full page navigation, followed by a `location.reload()` to display the new content. This demonstrates a practical and effective use of AJAX.
-*   **Dynamic DOM Access (15P)**: This is clearly demonstrated in `language_switcher.js`. The script uses `document.querySelectorAll` to find all language buttons, `forEach` to iterate over them, and `addEventListener` to dynamically attach click handlers. Inside the handler, `event.preventDefault()` is used to stop the browser's default action. This is a textbook example of dynamically manipulating the DOM.
+3.  **Responsive Layout:** The interface is fully responsive. The main three-column layout is built with CSS Flexbox, and the sidebars use `position: sticky` to remain visible during scrolling. Other pages, like `Tips.php`, use CSS Grid with `auto-fit` to create a card layout that adapts gracefully to any screen size.
 
-**ZH:**
-*   **高级加密 (10P)**: 我使用了维吉尼亚密码，这是一种多表代换密码，比基础的凯撒密码要安全得多。
-*   **AJAX 使用 (10P)**: AJAX 被广泛使用。不仅用于登录和注册，还用于语言切换功能。在 `language_switcher.js` 中，一个 `fetch` 请求被发送到 `switch_language.php` 以在后台更新会话，随后通过 `location.reload()` 显示新内容。这展示了对 AJAX 实用且高效的应用。
-*   **动态访问DOM (15P)**: 这在 `language_switcher.js` 中得到了清晰的展示。该脚本使用 `document.querySelectorAll` 查找所有语言按钮，通过 `forEach` 遍历它们，并使用 `addEventListener` 动态地附加点击事件。在事件处理函数中，`event.preventDefault()` 被用来阻止浏览器的默认行为。这是动态操控 DOM 的教科书级范例。
+**ZH:** 成功登录后，用户被重定向到主内容区。在这里，效率和良好的结构是关键。
 
-### Languages, Design & Documentation
-### 语言、设计与文档
+1.  **集中式初始化 (`init.php`):** 为避免代码重复，每个内容页面（`index.php`, `Ingredient.php` 等）都由包含一个文件开始：`init.php`。这个强大的脚本处理所有事情：
+    *   它启动会话 (`session_start()`)。
+    *   它执行安全检查（用户是否登录？会话是否已过期？）。
+    *   它设置语言环境。
+    *   它建立数据库连接。
+    这使得项目具有高度的可维护性。
 
-**EN:**
-*   **More than 2 Languages**: The site supports English, Chinese, and German.
-*   **Responsive Design**: The site is responsive. `index.css` uses Flexbox for the main layout, and other pages like `Tips.php` use CSS Grid with `repeat(auto-fit, ...)` to ensure the layout adapts gracefully to different screen sizes.
-*   **Documentation**: The project is well-documented with a comprehensive `README.md` file and clear, descriptive comments at the top of every single PHP, JS, and CSS file.
+2.  **数据驱动内容:** 所有文本都从我们的 MySQL 数据库动态加载。在 `init.php` 之后，每个页面都会包含 `translations.php`，它根据会话语言 (`$_SESSION['lang']`) 查询数据库，并填充一个 `$texts` 数组。这个数组随后被用来显示所有内容，使网站完全可管理且支持多语言。
 
-**ZH:**
-*   **超过2种语言**: 网站支持英语、中文和德语。
-*   **自适应设计**: 网站是自适应的。`index.css` 使用 Flexbox 进行主布局，而像 `Tips.php` 这样的页面则使用带有 `repeat(auto-fit, ...)` 的 CSS Grid，以确保布局能够优雅地适应不同的屏幕尺寸。
-*   **文档 (10P)**: 项目文档齐全，包含一个全面的 `README.md` 文件，并且每个 PHP、JS 和 CSS 文件的顶部都有清晰的描述性注释。
+3.  **自适应布局:** 界面是完全自适应的。主要的三栏布局由 CSS Flexbox 构建，侧边栏使用 `position: sticky` 以在滚动时保持可见。其他页面，如 `Tips.php`，则使用带有 `auto-fit` 的 CSS Grid 来创建能够优雅地适应任何屏幕尺寸的卡片布局。
+
+---
+
+## Part 3: The Language Switching Journey | 第三部分：语言切换之旅
+
+### Step 3: Changing the Language | 第3步：切换语言
+
+**EN:** Now, for the final part of our journey. The user decides to switch the language to German.
+
+1.  **Dynamic DOM Manipulation:** First, `language_switcher.js` uses `document.querySelectorAll` to find all language buttons and `forEach` to dynamically attach an `addEventListener` to each one. This is a core DOM manipulation technique.
+
+2.  **AJAX-Powered Interaction:** When the user clicks "Deutsch", the event listener triggers.
+    *   It immediately calls `event.preventDefault()` to stop the link from causing a standard page navigation.
+    *   It reads the target language ('de') from the button's `data-lang` attribute.
+    *   A `fetch` request is sent to `switch_language.php`, transmitting only the new language code.
+
+3.  **Efficient Backend Update & Reload:** The `switch_language.php` endpoint is simple and efficient. It receives the language code, updates the `$_SESSION['lang']` variable on the server, and returns a success message. Once the JavaScript receives this confirmation, it executes `location.reload()`. The page reloads, and because the session language has changed, our `init.php` and `translations.php` scripts automatically serve the entire page in German. This is a robust and practical implementation of an AJAX-initiated action.
+
+**ZH:** 现在，是我们旅程的最后一部分。用户决定将语言切换为德语。
+
+1.  **动态 DOM 操控:** 首先，`language_switcher.js` 使用 `document.querySelectorAll` 找到所有语言按钮，并使用 `forEach` 为每个按钮动态地附加一个 `addEventListener`。这是一项核心的 DOM 操控技术。
+
+2.  **AJAX 驱动的交互:** 当用户点击“Deutsch”时，事件监听器被触发。
+    *   它立即调用 `event.preventDefault()` 来阻止链接的默认导航行为。
+    *   它从按钮的 `data-lang` 属性中读取目标语言（'de'）。
+    *   一个 `fetch` 请求被发送到 `switch_language.php`，只传输新的语言代码。
+
+3.  **高效的后端更新与重载:** `switch_language.php` 这个接口简洁而高效。它接收语言代码，更新服务器上的 `$_SESSION['lang']` 变量，并返回一个成功消息。一旦 JavaScript 收到这个确认，它就会执行 `location.reload()`。页面重新加载，由于会话语言已经改变，我们的 `init.php` 和 `translations.php` 脚本会自动以德语提供整个页面。这是一个对 AJAX 驱动行为的稳健而实用的实现。
+
+---
+
+## Conclusion | 总结
+
+**EN:** This journey demonstrates that the project is not just a collection of features, but a cohesive system where front-end and back-end technologies work in harmony. It fulfills all requirements and showcases advanced skills in security, AJAX, database management, and code architecture.
+
+*   **Base Score**: 100 / 100
+*   **Upgrade Score**: 95 / 95
+*   **Total Estimated Score**: **195**
+
+Thank you.
+
+**ZH:** 这次旅程表明，该项目不仅仅是功能的集合，而是一个前端和后端技术和谐共存的、有凝聚力的系统。它满足了所有核心要求，并展示了在安全、AJAX、数据库管理和代码架构方面的高级技能。
+
+*   **基础分**: 100 / 100
+*   **附加分**: 95 / 95
+*   **预估总分**: **195**
+
+谢谢大家。

@@ -19,8 +19,6 @@ if (!isset($_SESSION['lang'])) {
     $_SESSION['lang'] = 'en';
 }
 
-// NOTE: This page only displays content in the current session language and has no switcher.
-$current_lang_code = $_SESSION['lang'];
 $current_lang_name = $available_langs[$current_lang_code];
 
 // --- 2. Security: Session & Activity Check ---

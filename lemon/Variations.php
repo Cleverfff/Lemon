@@ -19,13 +19,6 @@ if (!isset($_SESSION['lang'])) {
     $_SESSION['lang'] = 'en';
 }
 
-// Handle language change requests from the URL.
-if (isset($_GET['lang']) && array_key_exists($_GET['lang'], $available_langs)) {
-    $_SESSION['lang'] = $_GET['lang'];
-    header("Location: " . basename($_SERVER['PHP_SELF']));
-    exit();
-}
-
 $current_lang_code = $_SESSION['lang'];
 $current_lang_name = $available_langs[$current_lang_code];
 
